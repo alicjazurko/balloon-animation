@@ -1,19 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const elements = document.querySelectorAll('.anim-bg');
 
-    document.addEventListener('mousemove', function(e) {
-        const { clientX, clientY } = e;
-        const centerX = window.innerWidth/2;
-        const centerY = window.innerHeight/2;
-        elements.forEach(element => {
-            const ratioX = -element.getAttribute('ratioX');
-            const ratioY = -element.getAttribute('ratioY');
+    const animBg = new Animbg('.anim-bg')
 
-            const moveX = clientX - centerX; 
-            const moveY = clientY - centerY;
-
-            element.style.transform = `translate(${moveX * ratioX}px, ${moveY * ratioY}px)`
-
-        })
-    })
+    document.addEventListener('mousemove', (e) => animBg.listenCursorMove(e))
 })
